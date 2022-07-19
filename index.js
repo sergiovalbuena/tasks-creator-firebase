@@ -24,11 +24,13 @@ window.addEventListener("DOMContentLoaded", async () => {
       const task = doc.data();
 
       html += `
-        <div>
-          <h3>${task.title}</h3>
+        <div class='card card-body mt-2 border-primary'>
+          <h3 class='h5'>${task.title}</h3>
           <p>${task.description}</p>
-          <button class='btn-delete' data-id="${doc.id}">Delete</button>
-          <button class='btn-edit' data-id="${doc.id}">Edit</button>
+          <div>
+          <button class='btn-delete btn btn-primary' data-id="${doc.id}">Delete</button>
+          <button class='btn-edit btn btn-info' data-id="${doc.id}">Edit</button>
+          </div>
           </div>
         
       `;
@@ -87,7 +89,7 @@ taskForm.addEventListener("submit", (e) => {
   } else {
     updateTask(id, {
       title: title.value,
-      description: description.value
+      description: description.value,
     });
 
     editStatus = false;
@@ -95,3 +97,13 @@ taskForm.addEventListener("submit", (e) => {
 
   taskForm.reset();
 });
+
+
+//TODO
+/*
+desplegarlo con gh-pages en github || firebase hosting
+
+cambiar el index.js del innerHtml por createElements
+
+crear una whitelist para seguirdad en Firebase
+*/
