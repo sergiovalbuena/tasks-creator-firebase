@@ -8,7 +8,11 @@ import {
   collection,
   addDoc,
   getDocs,
-  onSnapshot
+  deleteDoc,
+  getDoc,
+  updateDoc,
+  onSnapshot,
+  doc
 } from "https://www.gstatic.com/firebasejs/9.9.0/firebase-firestore.js";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -40,3 +44,12 @@ export const saveTask = (title, description) => {
 export const getTasks = () => getDocs(collection(db, "tasks"));
 
 export const onGetTask = (callback) => onSnapshot(collection(db, 'tasks'), callback); 
+
+//eliminar ident
+//export const deleteTask = id => console.log(id);
+export const deleteTask = (id) => deleteDoc(doc(db, 'tasks', id));
+
+//obtener una tarea, para editarla 
+export const getTask = id => getDoc(doc(db, 'tasks', id));
+
+export const updateTask = (id, newFields) => updateDoc(doc(db, 'tasks', id), newFields )
