@@ -39,10 +39,4 @@ export const saveTask = (title, description) => {
 //Leer datos de la DB
 export const getTasks = () => getDocs(collection(db, "tasks"));
 
-export const onGetTask = () => console.log('onGetTask')
-
-export { 
-  onSnapshot,
-  collection, 
-  db
-}
+export const onGetTask = (callback) => onSnapshot(collection(db, 'tasks'), callback); 
